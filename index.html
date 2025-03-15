@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extractive Text Summarization</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: radial-gradient(circle at top, #0f0c29, #302b63, #24243e);
+            color: #fff;
+            scroll-behavior: smooth;
+        }
+        section {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            box-shadow: 0 4px 15px rgba(0, 255, 255, 0.5);
+            border: 1px solid #0ff;
+            border-radius: 10px;
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+        section:hover {
+            box-shadow: 0 0 10px #0ff, 0 0 40px #0ff, 0 0 80px #0ff;
+            transform: scale(1.02);
+        }
+        section:target {
+            box-shadow: 0 0 20px #0ff;
+        }
+        #welcome {
+            font-size: 2.5rem;
+            color: #0ff;
+            text-shadow: 0 0 10px #0ff;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 0.1em solid #0ff;
+            animation: typing 4s steps(40, end) 1, blink-caret 0.75s step-end infinite;
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #0ff; }
+        }
+        #project {
+            max-width: 1000px;
+        }
+        #userText, #num-sentences {
+            background: rgba(0, 0, 0, 0.7);
+            color: #0ff;
+            border: 1px solid #0ff;
+        }
+        button:hover {
+            box-shadow: 0 0 10px #0ff, 0 0 40px #0ff, 0 0 80px #0ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="flex flex-col items-center justify-center min-h-screen">
+        <h1 id="welcome" class="text-center mb-6">Welcome to Extractive Text Summarization Project</h1>
+        <section id="how-to-use" style="max-width: 1000px;">
+            <h2 class="text-2xl font-bold text-cyan-400">How to Use:</h2>
+            <ul class="list-disc list-inside text-cyan-300 mt-2">
+                <li>Enter the text you want to summarize in the text area below.</li>
+                <li>Specify the number of sentences you want in the summary.</li>
+                <li>Click on "Get Summarization" to generate the summary.</li>
+            </ul>
+        </section>
+
+        <section id="project">
+            <h2 class="text-2xl font-bold text-cyan-400 text-center">Extractive Text Summarization</h2>
+            <form id="text-form" class="p-6 rounded-lg">
+               <div class="grid grid-cols-3 gap-4">
+                    <textarea id="userText" name="text" class="col-span-3 p-2 rounded resize-none focus:outline-none focus:ring focus:ring-cyan-300" rows="15" placeholder="Enter your text here..."></textarea>
+                    <div class="flex flex-col justify-between">
+                        <label for="num-sentences" class="block text-sm font-medium text-cyan-300">Enter the total summary sentences</label>
+                        <input type="number" id="num-sentences" name="num-sentences" value="0" class="w-full rounded-lg px-4 py-2 mt-2 focus:outline-none focus:ring focus:ring-cyan-300">
+                        <button type="submit" class="mt-4 bg-cyan-500 text-black font-bold p-2 rounded hover:bg-cyan-600 transition-transform transform hover:scale-105">Get Summarization</button>
+                   </div> 
+                </div>
+                <p id="result" class="mt-4 font-semibold text-cyan-300"></p>
+            </form>
+        </section>
+
+        <section id="description">
+            <h2 class="text-2xl font-bold text-cyan-400">Description of the Project</h2>
+            <p class="text-cyan-300 mt-2">Simple Extractive Text Summarization</p>
+            <p class="mt-2">This project implements extractive text summarization, a technique that generates summaries by selecting important sentences from the input text. It ranks sentences based on their importance using TF-IDF (Term Frequency-Inverse Document Frequency) for vectorization and cosine similarity to measure sentence similarity.</p>
+            <p class="mt-2">The backend is implemented in Python, leveraging its libraries for calculations. The frontend uses JavaScript, allowing the summarization to run directly in the web browser. This simple technique does not involve deep learning but effectively summarizes based on the input text.</p>
+        </section>
+        <footer class="text-center text-cyan-400 mt-6">Created by THOTA KARTHIK NAGA RAJU</footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
